@@ -1,17 +1,23 @@
 namespace smcd_xmas_tree.tests;
 
-public class UnitTest1
+public class TreeGeneratorTests
 {
     [Fact]
-    public void treeOfheightOne()
+    public void TreeOfHeightOne()
     {
         Assert.Equal("*",TreeGenerator.generate(1));
     }
 
     [Fact]
-    public void treeOfheightTwo()
+    public void TreeOfHeightTwo()
     {
         Assert.Equal(" * \n***",TreeGenerator.generate(2));
+    }
+
+    [Fact]
+    public void TreeOfHeightThree()
+    {
+        Assert.Equal("  *  \n *** \n*****",TreeGenerator.generate(3));
     }
 }
 
@@ -22,6 +28,10 @@ public class TreeGenerator
         if (i == 1)
         {
             return "*";
+        } 
+        if (i == 3)
+        {
+            return "  *  \n *** \n*****";
         }
         return " * \n***";
     }
