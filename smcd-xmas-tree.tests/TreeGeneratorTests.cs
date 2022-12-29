@@ -23,15 +23,28 @@ public class TreeGeneratorTests
 
 public class TreeGenerator
 {
-    public static string generate(int i)
+    public static string generate(int treeHeight)
     {
-        if (i == 1)
+        if (treeHeight == 1)
         {
             return "*";
         }
-        else
-        {
-            return " " + generate(i - 1).Replace("\n", " \n ")+" \n" + new string('*', (2*i)-1);
-        }
+
+        return PadBothSides(generate(treeHeight - 1)) + "\n" + CreateLastTreeLine(treeHeight);
+    }
+
+    private static string PadBothSides(string smallerTree)
+    {
+        return " " + smallerTree.Replace("\n", " \n ") + " ";
+    }
+
+    private static string CreateLastTreeLine(int treeHeight)
+    {
+        return new string('*', WidthFor(treeHeight));
+    }
+
+    private static int WidthFor(int height)
+    {
+        return (2*height)-1;
     }
 }
