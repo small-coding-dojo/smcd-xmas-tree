@@ -23,16 +23,15 @@ public class TreeGeneratorTests
 
 public class TreeGenerator
 {
-    public static IEnumerable<char> generate(int i)
+    public static string generate(int i)
     {
         if (i == 1)
         {
             return "*";
-        } 
-        if (i == 3)
-        {
-            return "  *  \n *** \n*****";
         }
-        return " * \n***";
+        else
+        {
+            return " " + generate(i - 1).Replace("\n", " \n ")+" \n" + new string('*', (2*i)-1);
+        }
     }
 }
