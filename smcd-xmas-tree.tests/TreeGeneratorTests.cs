@@ -5,19 +5,19 @@ public class TreeGeneratorTests
     [Fact]
     public void TreeOfHeightOne()
     {
-        Assert.Equal("*",TreeGenerator.generate(1));
+        Assert.Equal("*", TreeGenerator.generate(1));
     }
 
     [Fact]
     public void TreeOfHeightTwo()
     {
-        Assert.Equal(" * \n***",TreeGenerator.generate(2));
+        Assert.Equal(" * \n***", TreeGenerator.generate(2));
     }
 
     [Fact]
     public void TreeOfHeightThree()
     {
-        Assert.Equal("  *  \n *** \n*****",TreeGenerator.generate(3));
+        Assert.Equal("  *  \n *** \n*****", TreeGenerator.generate(3));
     }
 }
 
@@ -45,6 +45,6 @@ public class TreeGenerator
 
     private static int WidthFor(int height)
     {
-        return (2*height)-1;
+        return (2 * height) - 1;
     }
 }
