@@ -19,18 +19,24 @@ public class TreeGeneratorTests
     {
         Assert.Equal("  *  \n *** \n*****", TreeGenerator.generate(3));
     }
+  
+    [Fact]
+    public void TreeOfHeightZero()
+    {
+        Assert.Equal("",TreeGenerator.generate(0));
+    }
+
 }
 
 public class TreeGenerator
-{
+{ 
     public static string generate(int treeHeight)
     {
-        if (treeHeight == 1)
-        {
-            return "*";
-        }
-
-        return PadBothSides(generate(treeHeight - 1)) + "\n" + CreateLastTreeLine(treeHeight);
+        return treeHeight switch { 
+            0 => "", 
+            1 => "*",
+            _ => PadBothSides(generate(treeHeight - 1)) + "\n" + CreateLastTreeLine(treeHeight)
+        };
     }
 
     private static string PadBothSides(string smallerTree)
