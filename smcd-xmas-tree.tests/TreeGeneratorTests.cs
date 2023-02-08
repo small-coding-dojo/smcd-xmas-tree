@@ -43,6 +43,34 @@ public class TreeGeneratorTests
     {
         Assert.Equal(new List<string> {"*", "***","*****","*******"},TreeGenerator.GenerateRecursively(4));
     }
+
+    [Fact]
+    public void CorrectlyPadAListForTreeHeight2()
+    {
+        var treeList = new List<string> {"*", "***"};
+        Assert.Equal(new List<string>{" * ", "***"},TreeGenerator.PadList(treeList));
+    }
+
+    [Fact]
+    public void CorrectlyPadAListForTreeHeight3()
+    {
+        var treeList = new List<string> {"*", "***", "*****"};
+        Assert.Equal(new List<string>{"  *  ", " *** ", "*****"},TreeGenerator.PadList(treeList));
+    }
+
+    [Fact]
+    public void CorrectlyPadAListForTreeHeight1()
+    {
+        var treeList = new List<string> { "*" };
+        Assert.Equal(new List<string>{ "*" },TreeGenerator.PadList(treeList));
+    }
+
+    [Fact]
+    public void PaddingDoesntDieOnEmptyInput()
+    {
+        var treeList = new List<string> {};
+        Assert.Equal(new List<string>{},TreeGenerator.PadList(treeList));
+    }
 }
 
 public class TreeGenerator
@@ -85,5 +113,18 @@ public class TreeGenerator
     private static int WidthFor(int height)
     {
         return (2 * height) - 1;
+    }
+
+    public static List<string> PadList(List<string> treeList)
+    {
+        var currentPadding = " ";
+        
+        for (var rowIndex = treeList.Count - 2; rowIndex >= 0; rowIndex--)
+        {
+            treeList[rowIndex] = currentPadding + treeList[rowIndex] + currentPadding;
+            currentPadding += " ";
+        }
+
+        return treeList;
     }
 }
