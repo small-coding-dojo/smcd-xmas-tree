@@ -9,13 +9,16 @@ public class TreeGenerator
     {
         return treeHeight switch { 
             0 => "", 
-            1 => tempGenerator(treeHeight),
-            _ => PadBothSides(generate(treeHeight - 1)) + "\n" + CreateLastTreeLine(treeHeight)
+            _ => tempGenerator(treeHeight)
+
         };
     }
 
-    public static string tempGenerator ( int treeHeight ) {
-        return string.Join ( "\n", GenerateRecursively(treeHeight));
+    public static string tempGenerator ( int treeHeight )
+    {
+        var subTree = GenerateRecursively(treeHeight);
+        PadList(subTree);
+        return ConcatenateList(subTree);
     }
     
     public static List<string> GenerateRecursively(int treeHeight)
