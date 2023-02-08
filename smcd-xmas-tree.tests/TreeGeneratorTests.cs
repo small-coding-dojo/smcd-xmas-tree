@@ -71,4 +71,32 @@ public class TreeGeneratorTests
         var treeList = new List<string> {};
         Assert.Equal(new List<string>{},TreeGenerator.PadList(treeList));
     }
+    
+    [Fact]
+    public void ConcatenateListWithTwoRows()
+    {
+        var treeList = new List<string> { " * ", "***"};
+        Assert.Equal(" * \n***",TreeGenerator.ConcatenateList(treeList));
+    }
+    [Fact]
+    public void ConcatenateListWithFourRows()
+    {
+        var treeList = new List<string> { "    *    ", "  ***  ", " ***** ", "*******"};
+        Assert.Equal("    *    \n  ***  \n ***** \n*******",TreeGenerator.ConcatenateList(treeList));
+    }
+
+    [Fact]
+    public void ConcatenateEmptyListDoesntDie()
+    {
+        var treeList = new List<string> { };
+        Assert.Equal("",TreeGenerator.ConcatenateList(treeList));
+    }
+
+    [Fact]
+    public void ConcatenateSingleItems()
+    {
+        var treeList = new List<string> { "*" };
+        Assert.Equal("*",TreeGenerator.ConcatenateList(treeList));
+    }
+
 }

@@ -1,3 +1,6 @@
+using System.Data;
+using System.Text;
+
 namespace smcd_xmas_tree.tests;
 
 public class TreeGenerator
@@ -54,4 +57,6 @@ public class TreeGenerator
 
         return treeList;
     }
+
+    public static string ConcatenateList(List<string> treeList) => string.Join("\n", treeList);
 }
