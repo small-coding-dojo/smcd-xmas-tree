@@ -1,11 +1,8 @@
-using System.Data;
-using System.Text;
-
 namespace smcd_xmas_tree.tests;
 
-public static class TreeGenerator
+public static class ChristmasTreeGenerator
 { 
-    public static string Generate(int treeHeight)
+    public static string ChristmasTree(int treeHeight)
     {
         if (treeHeight == 0)
         {
@@ -25,18 +22,8 @@ public static class TreeGenerator
         }
 
         var result = GenerateLevels(treeHeight - 1);
-        result.Add(new string('*', 1+(treeHeight-1)*2));
+        result.Add(new string('*', WidthFor(treeHeight)));
         return result;
-    }
-
-    private static string PadBothSides(string smallerTree)
-    {
-        return " " + smallerTree.Replace("\n", " \n ") + " ";
-    }
-
-    private static string CreateLastTreeLine(int treeHeight)
-    {
-        return new string('*', WidthFor(treeHeight));
     }
 
     private static int WidthFor(int height)
