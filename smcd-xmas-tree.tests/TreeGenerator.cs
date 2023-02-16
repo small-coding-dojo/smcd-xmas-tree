@@ -3,32 +3,28 @@ using System.Text;
 
 namespace smcd_xmas_tree.tests;
 
-public class TreeGenerator
+public static class TreeGenerator
 { 
-    public static string generate(int treeHeight)
+    public static string Generate(int treeHeight)
     {
-        return treeHeight switch { 
-            0 => "", 
-            _ => tempGenerator(treeHeight)
-
-        };
+        if (treeHeight == 0)
+        {
+            return "";
+        }
+        
+        var subTree = GenerateLevels(treeHeight);
+        CenterLevels(subTree);
+        return subTree.AsPrintable();
     }
 
-    public static string tempGenerator ( int treeHeight )
-    {
-        var subTree = GenerateRecursively(treeHeight);
-        PadList(subTree);
-        return ConcatenateList(subTree);
-    }
-    
-    public static List<string> GenerateRecursively(int treeHeight)
+    public static List<string> GenerateLevels(int treeHeight)
     {
         if (treeHeight == 1)
         {
             return new List<string>{"*"};
         }
 
-        var result = GenerateRecursively(treeHeight - 1);
+        var result = GenerateLevels(treeHeight - 1);
         result.Add(new string('*', 1+(treeHeight-1)*2));
         return result;
     }
@@ -48,7 +44,7 @@ public class TreeGenerator
         return (2 * height) - 1;
     }
 
-    public static List<string> PadList(List<string> treeList)
+    public static List<string> CenterLevels(List<string> treeList)
     {
         var currentPadding = " ";
         
@@ -61,5 +57,8 @@ public class TreeGenerator
         return treeList;
     }
 
-    public static string ConcatenateList(List<string> treeList) => string.Join("\n", treeList);
+    public static string AsPrintable(this List<string> treeList)
+    {
+        return string.Join("\n", treeList);
+    }
 }
