@@ -1,14 +1,14 @@
 namespace smcd_xmas_tree.tests;
 
 public static class ChristmasTreeGenerator
-{ 
+{
     public static string ChristmasTree(int treeHeight)
     {
         if (treeHeight == 0)
         {
             return "";
         }
-        
+
         var subTree = GenerateLevels(treeHeight);
         CenterLevels(subTree);
         return subTree.AsPrintable();
@@ -18,7 +18,7 @@ public static class ChristmasTreeGenerator
     {
         if (treeHeight == 1)
         {
-            return new List<string>{"*"};
+            return new List<string> { "*" };
         }
 
         var result = GenerateLevels(treeHeight - 1);
@@ -34,7 +34,7 @@ public static class ChristmasTreeGenerator
     public static List<string> CenterLevels(List<string> treeList)
     {
         var currentPadding = " ";
-        
+
         for (var rowIndex = treeList.Count - 2; rowIndex >= 0; rowIndex--)
         {
             treeList[rowIndex] = currentPadding + treeList[rowIndex] + currentPadding;

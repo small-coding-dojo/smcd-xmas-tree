@@ -15,7 +15,7 @@ namespace SmcdXmasTree.API.Tests
                 .Then()
                 .StatusCode(HttpStatusCode.OK);
         }
-        
+
         [Fact]
         public void ServerGivesTreeWithoutParameter()
         {
@@ -46,4 +46,4 @@ namespace SmcdXmasTree.API.Tests
                 .Body("tree", NHamcrest.Is.EqualTo(" * \n***"));
         }
     }
-} 
+}
