@@ -4,7 +4,7 @@ using static RestAssured.Dsl;
 
 namespace SmcdXmasTree.API.Tests
 {
-    public class UnitTest1
+    public class SmcdXmasTreeApiControllerTest
     {
         // A test case without assertions ensures only that no exceptions are thrown.
         // Beyond basic runnability, it ensures nothing about the behavior of the code under test.
