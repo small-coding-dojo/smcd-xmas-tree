@@ -6,6 +6,12 @@ namespace SmcdXmasTree.API.Tests
 {
     public class UnitTest1
     {
+        // A test case without assertions ensures only that no exceptions are thrown.
+        // Beyond basic runnability, it ensures nothing about the behavior of the code under test.
+        // This rule raises an exception when no assertions from supported frameworks.
+        // The Rest.Assured.Net we are using is none of them
+        #pragma warning disable S2699
+
         [Fact]
         public void ServerIsRunning()
         {
@@ -45,5 +51,6 @@ namespace SmcdXmasTree.API.Tests
                 .Then()
                 .Body("tree", NHamcrest.Is.EqualTo(" * \n***"));
         }
+        #pragma warning restore S2699
     }
 }
